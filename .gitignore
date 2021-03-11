@@ -1,0 +1,12 @@
+# Folders
+workspace/
+.idea/
+__pycache__/
+
+# Files
+*.tif
+*.png
+*.pdf
+*.mat
+*.docx
+
