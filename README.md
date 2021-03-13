@@ -11,7 +11,7 @@ This repository contains the source code for the method described in the paper:
 > 
 > *Multimedia Tools and Applications, Springer, 2020*  
 > Hamidreza Zarrabi, Ali Emami, Pejman Khadivi, Nader Karimi, Shadrokh Samavi  
-> [Published](https://link.springer.com/article/10.1007%2Fs11042-020-08698-9) &nbsp; [Arxiv](https://arxiv.org/abs/1911.00382)
+> [Published Version](https://link.springer.com/article/10.1007%2Fs11042-020-08698-9)
 > 
 > **Abstract:** *A watermarking system can help for the confidentiality of medical information distributed over the internet. In medical images, regions-of-interest (ROI) contain diagnostic information. The watermark should be embedded only into non-regions-of-interest (NROI) regions to keep diagnostically important details without distortion. Recently, ROI based watermarking has attracted the attention of the medical research community. The ROI map can be used as an embedding key for improving confidentiality protection purposes. However, in most existing works, the ROI map that is used for the embedding process must be sent as side-information along with the watermarked image. This side information is a disadvantage and makes the extraction process non-blind. Also, most existing algorithms do not recover NROI of the original cover image after the extraction of the watermark. In this paper, we propose a framework for blind diagnostically-lossless watermarking, which iteratively embeds only into NROI. The significance of the proposed framework is in satisfying the confidentiality of the patient information through a blind watermarking system, while it preserves diagnostic/medical information of the image throughout the watermarking process. A deep neural network is used to recognize the ROI map in the embedding, extraction, and recovery processes. In the extraction process, the same ROI map of the embedding process is recognized without requiring any additional information. Hence, the watermark is blindly extracted from the NROI. Furthermore, a three-layer fully connected neural network is used for the detection of distorted NROI blocks in the recovery process to recover the distorted NROI blocks to their original form. The proposed framework is compared with one lossless watermarking algorithm. Experimental results demonstrate the superiority of the proposed framework in terms of side information.*
 
@@ -42,7 +42,7 @@ To fair comparison, we recommend utilizing the pre-trained models if they are us
 <td align="center">Block Size</td><td align="center">6x6</td><td align="center">8x8</td><td align="center">10x10</td>
 </tr>
 <tr>
-<td align="center">Dataset</td>
+<td align="center">Network</td>
 <td align="center"><a href="https://drive.google.com/file/d/1R91QlcuD0JrFNlFbquNcUHCquJl-gBlh/view?usp=sharing"><div>Segmentation</div></a>
 <a href="https://drive.google.com/file/d/11dP4b0jPEh5XnjUCFwb_8i7UP0V2vW4F/view?usp=sharing"><div>Classification</div></a></td>
 <td align="center"><a href="https://drive.google.com/file/d/1x9KDJ4GG3wTrfXmzLTuEoP-jI-bchqLr/view?usp=sharing"><div>Segmentation</div></a>
@@ -60,6 +60,7 @@ python main.py
 There are several arguments that must be used, which are
 ```
 -data_path +str #Where to get the images for embedding/extraction
+-image_size +nargs #Which size of image as [height, width, channel]
 -process_name +str choices=['embedding', 'extraction'] #Embedding or extraction process
 -coefficient +nargs #Which used DCT coefficients in our algorithm
 -thresh +float #Which used threshold in our algorithm
@@ -80,7 +81,7 @@ python main.py -data_path workspace/img_marked -img_size 512 512 1 -process_name
 the recovered image is saved in `workspace/img_recovered/` directory.
 
 ## Results (From Pretrained models)
-Results on 22 images of [Angiography dataset](https://drive.google.com/file/d/1GvwetKvA0jOo6uu95MZ4sWZs6KuuG5fI/view?usp=sharing).
+Some results on 22 images of [Angiography dataset](https://drive.google.com/file/d/1GvwetKvA0jOo6uu95MZ4sWZs6KuuG5fI/view?usp=sharing).
 <table align="center" style="margin: 0px auto;">
 <tr>
 <td> Block size</td><td align="center">6x6</td><td align="center">8x8</td>
@@ -115,13 +116,10 @@ Results on 22 images of [Angiography dataset](https://drive.google.com/file/d/1G
 <tr>
 <td>Improvement of ROI PSNR (dB)</td><td>6.33 </td><td>7.15 </td>
 </tr>
-<tr>
-<td>Average Percent of Switched NROI Block into ROI Block (%)</td><td>0.047</td><td> 0.040</td>
-</tr>
 </table>
 
 ## Citation
-Please cite our work if you find this repo useful in your research.
+Please cite our paper if you find this repo useful in your research.
 ```
 @article{Zarrabi_2020,
 	doi = {10.1007/s11042-020-08698-9},
